@@ -34,8 +34,10 @@ SECRET_KEY = os.getenv("SECRET-KEY", "change-me")
 DEBUG = bool(int(os.getenv("DEBUG", 0)))
 # DEBUG = True
 
-ALLOWED_HOSTS = [h.strip() for h in os.getenv("ALLOWED_HOSTS", "").split() if h.strip()]
-# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    h.strip() for h in os.getenv("ALLOWED_HOSTS", "").split(",") if h.strip()
+]
+# ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
 
 # Application definition
@@ -91,6 +93,10 @@ DATABASES = {
         "PASSWORD": os.getenv("MYSQL_PASSWORD", "change-me"),
         "HOST": os.getenv("MYSQL_HOST", "change-me"),
         "PORT": os.getenv("MYSQL_PORT", "change-me"),
+        "OPTIONS": {
+            "charset": "utf8mb4",
+            "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
 }
 
