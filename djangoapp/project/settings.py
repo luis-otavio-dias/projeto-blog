@@ -10,9 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+from dotenv import load_dotenv
 import os
 from pathlib import Path
 
+
+# Env
+load_dotenv("C:/Users/Usuário/PythonUdemy/projeto-blog/dotenv_files/.env")
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 # /data/web/static
@@ -28,8 +32,10 @@ SECRET_KEY = os.getenv("SECRET-KEY", "change-me")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(int(os.getenv("DEBUG", 0)))
+# DEBUG = True
 
 ALLOWED_HOSTS = [h.strip() for h in os.getenv("ALLOWED_HOSTS", "").split() if h.strip()]
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -80,11 +86,11 @@ WSGI_APPLICATION = "project.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": os.getenv("DB_ENGINE", "change-me"),
-        "NAME": os.getenv("POSTGRES_DB", "change-me"),
-        "USER": os.getenv("POSTGRES_USER", "change-me"),
-        "PASSWORD": os.getenv("POSTGRES_PASSWORD", "change-me"),
-        "HOST": os.getenv("POSTGRES_HOST", "change-me"),
-        "PORT": os.getenv("POSTGRES_PORT", "change-me"),
+        "NAME": os.getenv("MYSQL_DB", "change-me"),
+        "USER": os.getenv("MYSQL_USER", "change-me"),
+        "PASSWORD": os.getenv("MYSQL_PASSWORD", "change-me"),
+        "HOST": os.getenv("MYSQL_HOST", "change-me"),
+        "PORT": os.getenv("MYSQL_PORT", "change-me"),
     }
 }
 
