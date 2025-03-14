@@ -15,13 +15,14 @@ import os
 from pathlib import Path
 
 
-# Env
-load_dotenv("C:/Users/Usuário/PythonUdemy/projeto-blog/dotenv_files/.env")
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-# /data/web/static
-# /data/web/media
+
+# /data/web/media | /data/web/static
 DATA_DIR = BASE_DIR.parent / "data" / "web"
+
+# Load .env rightly
+load_dotenv(BASE_DIR.parent / "dotenv_files" / ".env")
 
 
 # Quick-start development settings - unsuitable for production
