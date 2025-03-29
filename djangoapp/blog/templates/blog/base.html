@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <head>
   {% include "blog/partials/_head.html" %}
-</head>
+</head> 
 <body>
+  <h1>Exemplo: {{ site_setup.title }}</h1>
   {% include "blog/partials/_header.html" %}
+
   {% block content %}{% endblock content %}
+
   {% include "blog/partials/_pagination.html" %}
+
   {% include "blog/partials/_footer.html" %}
 </body>
 </html>
