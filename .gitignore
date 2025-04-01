@@ -1,13 +1,18 @@
+/djangoapp/media/
+/djangoapp/static/
+/djangoapp/project/local_settings.py
+migrations
+gunicorn-error-log
+__localcode
+/data/
+
 # Django #
 *.log
 *.pot
 *.pyc
 __pycache__
 db.sqlite3
-media
-static
-migrations
-project/local_settings.py
+
 
 # Backup files # 
 *.bak 
