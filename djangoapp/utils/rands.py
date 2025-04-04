@@ -6,7 +6,7 @@ from django.utils.text import slugify
 def random_letters(k=5):
     return "".join(
         SystemRandom().choices(
-            string.ascci_lowercase + string.digits,
+            string.ascii_lowercase + string.digits,
             k=k,
         )
     )
