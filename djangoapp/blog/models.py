@@ -110,7 +110,7 @@ class Post(models.Model):
         on_delete=models.SET_NULL,
         blank=True,
         null=True,
-        related_name="page_created_by",
+        related_name="post_created_by",
     )
     updated_at = models.DateTimeField(auto_now=True)
     updated_by = models.ForeignKey(
@@ -118,7 +118,7 @@ class Post(models.Model):
         on_delete=models.SET_NULL,
         blank=True,
         null=True,
-        related_name="page_updated_by",
+        related_name="post_updated_by",
     )
     category = models.ForeignKey(
         Category,
@@ -134,5 +134,5 @@ class Post(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify_new(self.name, 4)
+            self.slug = slugify_new(self.title, 4)
         return super().save(*args, **kwargs)
