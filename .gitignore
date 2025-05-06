@@ -1,3 +1,4 @@
+.vscode/
 /djangoapp/media/
 /djangoapp/static/
 /djangoapp/project/local_settings.py
