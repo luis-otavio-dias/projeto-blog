@@ -38,7 +38,11 @@
           <span class="post-meta-link">
             <i class="fa-solid fa-calendar-days"></i>
             <span>
+              {% if post.updated_at %}
+                Modificado: {{ post.updated_at | date:'d/m/Y \à\s H:m'}}
+              {% else %}
                 {{ post.created_at | date:'d/m/Y \à\s H:m'}}
+              {% endif %}
             </span>
           </span>
         </div>
@@ -60,14 +64,14 @@
 
       <p class="single-post-excerpt pb-base">
         {% if post.excerpt %}
-          {{ post.excerpt }}
+          {{ post.excerpt | safe }}
         {% endif %}
       </p>
 
       <div class="separator"></div>
 
       <div class="single-post-content">
-        {% include 'blog/partials/_temp.html' %} 
+        {{ post.content | safe }}
       
         <div class="post-tags">
           <span>Tags: </span>
