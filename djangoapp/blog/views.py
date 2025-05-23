@@ -6,7 +6,6 @@ from django.contrib.auth.models import User
 from django.http import Http404
 from django.views.generic import ListView
 
-
 PER_PAGE = 9
 
 
