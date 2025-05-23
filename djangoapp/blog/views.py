@@ -4,12 +4,26 @@ from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 from django.contrib.auth.models import User
 from django.http import Http404
+from django.views.generic import ListView
 
 
 PER_PAGE = 9
 
 
-# Create your views here.
+class PostListView(ListView):
+    model = Post
+    template_name = "blog/pages/index.html"
+    context_object_name = "posts"
+    ordering = "-pk"
+    paginate_by = PER_PAGE
+    queryset = Post.objects.get_published()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update({"page_title": "Home - "})
+        return context
+
+
 def index(request):
     posts = Post.objects.get_published()
 
@@ -122,7 +136,9 @@ def search(request):
 
 
 def page(request, slug):
-    page_obj = get_object_or_404(Page.objects.get_published().filter(slug=slug))
+    page_obj = get_object_or_404(
+        Page.objects.get_published().filter(slug=slug),
+    )
 
     if not page_obj:
         raise Http404()
@@ -140,7 +156,9 @@ def page(request, slug):
 
 
 def post(request, slug):
-    post_obj = get_object_or_404(Post.objects.get_published().filter(slug=slug))
+    post_obj = get_object_or_404(
+        Post.objects.get_published().filter(slug=slug),
+    )
 
     if not post_obj:
         raise Http404()

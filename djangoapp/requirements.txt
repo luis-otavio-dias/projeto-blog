@@ -1,3 +1,0 @@
-Django>=5.1.7,<5.2
-psycopg2-binary>=2.9.6,<2.10
-Pillow>=9.5.0,<9.6
